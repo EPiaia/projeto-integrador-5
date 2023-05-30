@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-xl">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Abrigo de Animais</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="resgates.html">Solicitar Resgate</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="denuncias.html">Denunciar Maus Tratos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="adotar.html">Adotar</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuCadastro" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Cadastro
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuCadastro">
+                                <a class="dropdown-item" href="animais.html">Animais</a>
+                                <a class="dropdown-item" href="racas.html">Raças</a>
+                                <a class="dropdown-item" href="adocao.html">Adoção</a>
+                                <a class="dropdown-item" href="pessoas.html">Pessoas</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuRelatorios" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Relatórios
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuRelatorios">
+                                <a class="dropdown-item" href="relatorioResgates.html">Resgates</a>
+                                <a class="dropdown-item" href="relatorioDenuncias.html">Denúncias</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <button type="button" class="btn btn-primary ml-auto btn-sign" style="white-space: nowrap;"><a
+                            href="cadastro.html">Cadastrar-se</a></button>
+                    <button type="button" class="btn btn-primary ml-3 btn-sign" style="white-space: nowrap;"><a
+                            href="login.html">Entrar</a></button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <div class="container">
+                        <h1>Solicitação de Resgate</h1>
+                        <p>Obrigado por considerar a nossa organização de resgate para ajudar com as suas necessidades
+                            de resgate de animais. Por favor, preencha o formulário abaixo e entraremos em contato com
+                            você o mais breve possível.</p>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Nome</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Número de contato</label>
+                                <input type="tel" class="form-control" id="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Localização</label>
+                                <input type="text" class="form-control" id="location" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Observações</label>
+                                <textarea class="form-control" id="description" rows="3" required></textarea>
+                            </div>
+                            <div class="image-picker">
+                                <label for="file-input" class="file-label">
+                                    <i class="material-icons d-inline-block align-middle">photo</i> Fotos
+                                </label>
+                                <input type="file" id="file-input" class="file-input" multiple>
+                                <ul class="image-list"></ul>
+                            </div>
+                            <hr>
+                            <button type="submit" class="btn btn-primary float-right">Confirmar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Contato</h5>
+                    <ul class="list-unstyled">
+                        <li>Telefone: (XX) XXXX-XXXX</li>
+                        <li>PIX: (XX) XXXX-XXXX</li>
+                        <li>Endereço: Rua Random, 123</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Links Úteis</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Redes Sociais</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="{% static 'script.js' %}" async></script>
+</body>
+
+</html>

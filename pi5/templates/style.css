@@ -1,0 +1,474 @@
+* {
+    font-family: 'Lato', sans-serif;
+}
+
+/* Define color variables */
+:root {
+    --primary-color: #ffa500;
+    --secondary-color: #333;
+    --background-color: #f9f9f9;
+    --text-color: #333;
+    --text-color-light: #fff;
+  }
+
+  /* Body Styles */
+  body {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Header Styles */
+  header {
+    background-color: var(--secondary-color) !important;
+    position: relative;
+    z-index: 999;
+    padding: 15px;
+  }
+
+  .navbar {
+    min-height: unset;
+  }
+  
+  .navbar-brand {
+    color: var(--text-color-light);
+    font-weight: 700;
+    font-size: 24px;
+    margin-right: 20px;
+  }
+  
+  .navbar-brand:hover {
+    color: var(--primary-color);
+  }
+  
+  .navbar-nav .nav-link {
+    color: var(--text-color-light);
+    font-weight: 500;
+    margin-right: 20px;
+    white-space: nowrap;
+  }
+  
+  /* Move Sign up button to the right */
+  .navbar-nav li.nav-item:last-child {
+    margin-left: auto;
+    margin-right: 20px; /* add margin to the right of the Sign up button */
+  }
+  
+  .navbar-nav .nav-item:hover .dropdown-menu {
+    color: var(--text-color-light) !important;
+    display: block;
+  }
+  
+  .dropdown-menu {
+    background-color: var(--primary-color);
+    border: none;
+  }
+  
+  .dropdown-item {
+    color: var(--text-color-light) !important;
+    background-color: var(--primary-color) !important;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #ff8c00 !important;
+  }
+  
+  /* Move Sign up button to the right */
+  .navbar-nav li.nav-item:last-child {
+    margin-left: auto;
+  }
+  
+  /* Main Content Styles */
+  main {
+    padding: 100px;
+    padding-top: 50px;
+  }
+  
+  /* Style the headings */
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Add some padding to the columns */
+  .col-md-4 {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .col-md-8 h2,
+  .col-md-4 h1 {
+    height: 60px; /* adjust the height as needed */
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Style the images */
+  img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  /* Style the buttons */
+  /* Change button colors to primary */
+  .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+  
+  /* Update button hover colors to primary */
+  .btn-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+  
+  .btn-primary:focus,
+  .btn-primary:active {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    box-shadow: none;
+    outline: none;
+  }
+  
+  /* Add some margin between columns */
+  .gx-5 > .col-md-4 {
+    margin-bottom: 20px;
+  }
+
+  .btn-sign:hover {
+    background-color: #ff8c00;
+  }
+  
+  /* Footer Styles */
+  footer {
+    background-color: var(--secondary-color);
+    color: var(--text-color-light);
+    padding: 50px 0;
+    position: relative;
+    clear: both;
+  }
+  
+  footer p {
+    font-size: 14px;
+    text-align: center;
+    margin: 0;
+  }
+  
+  footer ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  footer ul li {
+    margin-bottom: 10px;
+  }
+  
+  footer ul li a {
+    color: var(--text-color-light);
+  }
+
+footer h5 {
+    color: var(--text-color-light);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* Registration form styles */
+.form-group label {
+  font-weight: 500;
+}
+
+.form-group input {
+  border-radius: 0;
+}
+
+.form-check-input[type=checkbox] {
+  margin-right: 10px;
+}
+
+.form-submit {
+  text-align: right;
+}
+
+/* Success message */
+.success-message {
+  color: green;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+/* Error message */
+.error-message {
+  color: red;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+/* Registration table styles */
+.table th {
+  font-weight: 500;
+  text-align: center;
+}
+
+.table td {
+  text-align: center;
+}
+
+.table td img {
+  max-width: 100px;
+}
+
+.table thead {
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+}
+
+.table thead th {
+  border: none;
+}
+
+.table tbody tr:nth-child(2n) {
+  background-color: #f9f9f9;
+}
+
+.table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.card-date {
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+  color: #6c757d;
+}
+
+.image-picker {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.file-label {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.file-label:hover {
+  background-color: #ff8c00;
+}
+
+.file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.image-list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+.image-list li {
+  margin-bottom: 5px;
+}
+
+.remove-icon {
+  margin-left: 5px;
+  color: red;
+  cursor: pointer;
+}
+
+.icon-button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.cad-edit-icon {
+  color: #333;
+}
+
+.cad-edit-icon:hover {
+  color: var(--primary-color);
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  height: 50px;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 5px;
+}
+
+.search-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.search-button i {
+  color: #999;
+}
+
+/* Custom styles for Select2 dropdown */
+.select2-container--default .select2-selection--single {
+  height: 45px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  padding: 5px;
+  position: relative !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 45px;
+  position: absolute !important;
+  top: 50%;
+  transform: translateY(-50%) !important;
+  right: 10px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+  color: #333 !important;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: none;
+  outline: none;
+  padding: 5px;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field .search-button {
+  padding: 0;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field .search-button i {
+  color: #999;
+}
+
+/* Cards */
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+@media (max-width: 576px) {
+  .card-img-top {
+    height: 150px;
+  }
+}
+
+.expanded-row {
+  background-color: lightgray;
+  display: none;
+}
+.expanded-row.visible {
+  display: table-row;
+}
+
+.dialog {
+  position: fixed;
+  top: 70%;
+  right: 40%;
+  left: 50%;
+  width: 60%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dialog-content {
+  text-align: center;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.close-button:focus {
+  outline: none;
+}
+
+.carousel {
+  width: 100%;
+}
+
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 56.25%; /* Aspect ratio for 16:9 display */
+  overflow: hidden;
+}
+
+.carousel-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
