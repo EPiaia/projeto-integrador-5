@@ -22,3 +22,36 @@ def racas(request):
         }
 
         return render(request, "racas.html", context)
+    
+def index(request):
+    return render(request, "index.html")
+
+def adocao(request):
+    return render(request, "adocao.html")
+
+def adotar(request):
+    return render(request, "adotar.html")
+
+def animais(request):
+    return render(request, "animais.html")
+
+def cadastro(request):
+    return render(request, "cadastro.html")
+
+def denuncias(request):
+    return render(request, "denuncias.html")
+
+def login(request):
+    return render(request, "login.html")
+
+def pessoas(request):
+    return render(request, "pessoas.html")
+
+def relatorioDenuncias(request):
+    return render(request, "relatorioDenuncias.html")
+
+def relatorioResgates(request):
+    return render(request, "relatorioResgates.html")
+
+def resgates(request):
+    return render(request, "resgates.html")

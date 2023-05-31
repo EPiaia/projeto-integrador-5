@@ -22,7 +22,7 @@
     <header>
         <nav class="navbar navbar-expand-xl">
             <div class="container">
-                <a class="navbar-brand" href="index.html">Abrigo de Animais</a>
+                <a class="navbar-brand" href="{% url 'index' %}">Abrigo de Animais</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -30,13 +30,13 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="resgates.html">Solicitar Resgate</a>
+                            <a class="nav-link" href="{% url 'resgates' %}">Solicitar Resgate</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="denuncias.html">Denunciar Maus Tratos</a>
+                            <a class="nav-link" href="{% url 'denuncias' %}">Denunciar Maus Tratos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="adotar.html">Adotar</a>
+                            <a class="nav-link" href="{% url 'adotar' %}">Adotar</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuCadastro" role="button"
@@ -44,10 +44,10 @@
                                 Cadastro
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuCadastro">
-                                <a class="dropdown-item" href="animais.html">Animais</a>
-                                <a class="dropdown-item" href="racas.html">Raças</a>
-                                <a class="dropdown-item" href="adocao.html">Adoção</a>
-                                <a class="dropdown-item" href="pessoas.html">Pessoas</a>
+                                <a class="dropdown-item" href="{% url 'animais' %}">Animais</a>
+                                <a class="dropdown-item" href="{% url 'racas' %}">Raças</a>
+                                <a class="dropdown-item" href="{% url 'adocao' %}">Adoção</a>
+                                <a class="dropdown-item" href="{% url 'pessoas' %}">Pessoas</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -56,22 +56,22 @@
                                 Relatórios
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuRelatorios">
-                                <a class="dropdown-item" href="relatorioResgates.html">Resgates</a>
-                                <a class="dropdown-item" href="relatorioDenuncias.html">Denúncias</a>
+                                <a class="dropdown-item" href="{% url 'relatorioResgates' %}">Resgates</a>
+                                <a class="dropdown-item" href="relatorio{% url 'denuncias' %}">Denúncias</a>
                             </div>
                         </li>
                     </ul>
                     <button type="button" class="btn btn-primary ml-auto btn-sign" style="white-space: nowrap;"><a
-                            href="cadastro.html">Cadastrar-se</a></button>
+                            href="{% url 'cadastro' %}">Cadastrar-se</a></button>
                     <button type="button" class="btn btn-primary ml-3 btn-sign" style="white-space: nowrap;"><a
-                            href="login.html">Entrar</a></button>
+                            href="{% url 'login' %}">Entrar</a></button>
                 </div>
             </div>
         </nav>
     </header>
     
     <main>
-        <img src="sources/dog.jpg" alt="background image"
+        <img src="{% static 'sources/dog.jpg' %}" alt="background image"
             style="position: absolute; top: 0; left: 0; width: 100%; height: 550px; object-fit: cover; opacity: 0.2;">
         <div class="container">
             <div class="row index-text" style="position: relative;">
@@ -99,7 +99,7 @@
             </div>
             <div class="row gx-5">
                 <div class="col-md-4">
-                    <img src="sources/donation.jpg" alt="Doação" style="max-height: 200px;">
+                    <img src="{% static 'sources/donation.jpg' %}" alt="Doação" style="max-height: 200px;">
                     <h4>Doações</h4>
                     <p>Como uma organização sem fins lucrativos, dependemos de doações para manter o nosso abrigo
                         funcionando. Qualquer quantia é bem-vinda, e ficamos gratos por qualquer contribuição que você
@@ -107,7 +107,7 @@
                     <a href="#" class="btn btn-primary btn-lg">Faça uma doação agora</a>
                 </div>
                 <div class="col-md-4">
-                    <img src="sources/volunteer.jpg" alt="Voluntário" style="max-height: 200px;">
+                    <img src="{% static 'sources/volunteer.jpg' %}" alt="Voluntário" style="max-height: 200px;">
 
                     <h4>Voluntário</h4>
                     <p>Sempre precisamos de voluntários para ajudar no cuidado dos nossos animais. Se você tem
@@ -115,7 +115,7 @@
                     <a href="#" class="btn btn-primary btn-lg">Torne-se um voluntário</a>
                 </div>
                 <div class="col-md-4">
-                    <img src="sources/adoption.jpg" alt="Adoção" style="max-height: 200px;">
+                    <img src="{% static 'sources/adoption.jpg' %}" alt="Adoção" style="max-height: 200px;">
                     <h4>Adoção</h4>
                     <p>A adoção de animais é um ato que traz alegria e amor para ambas as partes envolvidas. Encontrar um lar seguro e amoroso para os animais é fundamental para o seu bem-estar e felicidade.</p>
                     <a href="#" class="btn btn-primary btn-lg">Adote um animal</a>

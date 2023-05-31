@@ -20,5 +20,17 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('index/', views.index, name='index'),
+    path('', views.index, name='index'),
+    path('adocao/', views.adocao, name='adocao'),
+    path('adotar/', views.adotar, name='adotar'),
+    path('animais/', views.animais, name='animais'),
+    path('cadastro/', views.cadastro, name='cadastro'),
+    path('denuncias/', views.denuncias, name='denuncias'),
+    path('login/', views.login, name='login'),
+    path('pessoas/', views.pessoas, name='pessoas'),
     path('racas/', views.racas, name='racas'),
+    path('relatorioDenuncias/', views.relatorioDenuncias, name='relatorioDenuncias'),
+    path('relatorioResgates/', views.relatorioResgates, name='relatorioResgates'),
+    path('resgates/', views.resgates, name='resgates')
 ]
