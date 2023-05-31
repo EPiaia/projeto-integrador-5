@@ -32,5 +32,7 @@ urlpatterns = [
     path('racas/', views.racas, name='racas'),
     path('relatorioDenuncias/', views.relatorioDenuncias, name='relatorioDenuncias'),
     path('relatorioResgates/', views.relatorioResgates, name='relatorioResgates'),
-    path('resgates/', views.resgates, name='resgates')
+    path('resgates/', views.resgates, name='resgates'),
+    path('excluir_raca/<int:id>', views.excluirRaca, name="excluir_raca"),
+    path('editar_raca/<int:id>', views.editarRaca, name="editar_raca")
 ]

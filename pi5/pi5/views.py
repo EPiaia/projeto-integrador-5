@@ -23,6 +23,30 @@ def racas(request):
 
         return render(request, "racas.html", context)
     
+def editarRaca(request, id):
+    raca = Raca.objects.get(id=id)
+    if request.method == 'POST':
+        raca.tipo = Tipo.objects.get(id=request.POST['tipo'])
+        raca.descricao = request.POST['descricao'].strip()
+        raca.save()
+        return redirect('racas')
+    else:
+        tipos = Tipo.objects.all()
+        racas = Raca.objects.all()
+    
+        context = {
+            "tipos": tipos,
+            "racas": racas,
+            "raca": raca
+        }
+
+        return render(request, "racas.html", context)
+    
+def excluirRaca(request, id):
+    raca = Raca.objects.get(id=id)
+    raca.delete()
+    return redirect('racas')
+    
 def index(request):
     return render(request, "index.html")
 

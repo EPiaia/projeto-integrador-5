@@ -93,10 +93,10 @@
 								<td>{{ r.descricao }}</td>
 								<td>
 									<button class="icon-button ml-3">
-										<i class="material-icons cad-edit-icon">edit</i>
+										<a href="{% url 'editar_raca' r.id %}"><i class="material-icons cad-edit-icon">edit</i></a>
 									</button>
 									<button class="icon-button ml-3">
-										<i class="material-icons cad-edit-icon">delete</i>
+										<a href="{% url 'excluir_raca' r.id %}"><i class="material-icons cad-edit-icon">delete</i></a>
 									</button>
 								</td>
 							</tr>
@@ -106,7 +106,7 @@
 				</div>
 				<div class="col-md-5">
 					<h1>Cadastrar uma raça</h1>
-					<form action="{% url 'racas' %}" method="post">
+					<form action="{% if raca %}{% url 'editar_raca' raca.id %}{% else %}{% url 'racas' %}{% endif %}" method="post">
 						{% csrf_token %}
 						<div class="form-group">
 							<label for="animal-type">Tipo de Animal</label>
@@ -118,7 +118,7 @@
 						</div>
 						<div class="form-group">
 							<label for="description">Descrição</label>
-							<textarea class="form-control" id="description" rows="3" name="descricao"></textarea>
+							<textarea class="form-control" id="description" rows="3" name="descricao">{% if raca %}{{ raca.descricao }}{% endif %}</textarea>
 						</div>
 						<hr>
 						<div class="form-submit">
