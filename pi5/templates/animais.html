@@ -122,71 +122,60 @@
 							</tr>
 						</thead>
 						<tbody>
+							{% for animal in animais %}
 							<tr>
-								<td>Buddy</td>
-								<td>Labrador</td>
-								<td>Aguardando adoção</td>
+								<td>{{ animal.nome }}</td>
+								<td>{{ animal.raca.descricao }}</td>
+								<td>{{ animal.situacao.situacao }}</td>
 								<td>
 									<button class="icon-button" onclick="openDialog('main-dialog')">
 										<i class="material-icons cad-edit-icon">photo</i>
 									</button>
 									<button class="icon-button ml-3">
-										<i class="material-icons cad-edit-icon">edit</i>
+										<a href="{% url 'editar_animal' animal.id %}"><i class="material-icons cad-edit-icon">edit</i></a>
 									</button>
 									<button class="icon-button ml-3">
-										<i class="material-icons cad-edit-icon">delete</i>
+										<a href="{% url 'excluir_animal' animal.id %}"><i class="material-icons cad-edit-icon">delete</i></a>
 									</button>
 								</td>
 							</tr>
-							<tr>
-								<td>Pedro</td>
-								<td>Puddle</td>
-								<td>Aguardando adoção</td>
-								<td>
-									<button class="icon-button">
-										<i class="material-icons cad-edit-icon">photo</i>
-									</button>
-									<button class="icon-button ml-3">
-										<i class="material-icons cad-edit-icon">edit</i>
-									</button>
-									<button class="icon-button ml-3">
-										<i class="material-icons cad-edit-icon">delete</i>
-									</button>
-								</td>
-							</tr>
+							{% endfor %}
 						</tbody>
 					</table>
 				</div>
 				<div class="col-md-4">
 					<h1>Cadastrar um animal</h1>
-					<form>
+					<form action="{% if animal %}{% url 'editar_animal' animal.id %}{% else %}{% url 'animais' %}{% endif %}" method="post">
+						{% csrf_token %}
 						<div class="form-group">
 							<label for="animal-name">Nome do Animal</label>
-							<input type="text" class="form-control" id="animal-name">
+							<input type="text" class="form-control" id="animal-name" name="nome" value="{% if animal %}{{animal.nome}}{% endif %}">
 						</div>
 						<div class="form-group">
 							<label for="animal-type">Raça</label>
-							<select class="form-control" id="animal-type">
-								<option>Raça 1</option>
-								<option>Raça 2</option>
+							<select class="form-control" id="animal-type" name="raca">
+								{% for raca in racas %}
+								<option value="{{ raca.id }}">{{ raca.descricao }}</option>
+								{% endfor %}
 							</select>
 						</div>
 						<div class="form-group">
 							<label for="animal-type">Situação</label>
-							<select class="form-control" id="animal-type">
-								<option>Aguardando adoção</option>
-								<option>Adotado</option>
+							<select class="form-control" id="animal-type" name="situacao">
+								{% for situacao in situacoes %}
+								<option value="{{ situacao.id }}">{{ situacao.situacao }}</option>
+								{% endfor %}
 							</select>
 						</div>
 						<div class="form-group">
 							<label for="description">Observações</label>
-							<textarea class="form-control" id="description" rows="3" required></textarea>
+							<textarea class="form-control" id="description" rows="3" required name="observacoes">{% if animal %}{{animal.observacao}}{% endif %}</textarea>
 						</div>
 						<div class="image-picker">
 							<label for="file-input" class="file-label">
 								<i class="material-icons d-inline-block align-middle">photo</i> Fotos
 							</label>
-							<input type="file" id="file-input" class="file-input" multiple>
+							<input type="file" id="file-input" class="file-input" multiple name="fotos">
 							<ul class="image-list"></ul>
 						</div>
 						<hr>

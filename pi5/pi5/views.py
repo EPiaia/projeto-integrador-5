@@ -57,7 +57,55 @@ def adotar(request):
     return render(request, "adotar.html")
 
 def animais(request):
-    return render(request, "animais.html")
+    if request.method == 'POST':
+        animal = Animal(
+            nome = request.POST['nome'].strip(),
+            observacao = request.POST['observacoes'].strip(),
+            situacao = Situacao.objects.get(id=request.POST['situacao']),
+            raca = Raca.objects.get(id=request.POST['raca'])
+        )
+        animal.save()
+        return redirect('animais')
+    else:
+        animais = Animal.objects.all()
+        racas = Raca.objects.all()
+        situacoes = Situacao.objects.all()
+
+        context = {
+            "animais": animais,
+            "racas": racas,
+            "situacoes": situacoes
+        }
+
+        return render(request, "animais.html", context)
+    
+def excluirAnimal(request, id):
+    animal = Animal.objects.get(id=id)
+    animal.delete()
+    return redirect('animais')
+
+def editarAnimal(request, id):
+    animal = Animal.objects.get(id=id)
+    if request.method == 'POST':
+        animal.nome = request.POST['nome'].strip()
+        animal.raca = Raca.objects.get(id=request.POST['raca'])
+        animal.situacao = Situacao.objects.get(id=request.POST['situacao'])
+        animal.observacao = request.POST['observacoes'].strip()
+        animal.save()
+        return redirect('animais')
+    else:
+        situacoes = Situacao.objects.all()
+        racas = Raca.objects.all()
+        animais = Animal.objects.all()
+    
+        context = {
+            "animal": animal,
+            "animais": animais,
+            "racas": racas,
+            "situacoes": situacoes
+        }
+
+        return render(request, "animais.html", context)
 
 def cadastro(request):
     return render(request, "cadastro.html")

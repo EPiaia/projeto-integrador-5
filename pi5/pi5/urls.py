@@ -34,5 +34,7 @@ urlpatterns = [
     path('relatorioResgates/', views.relatorioResgates, name='relatorioResgates'),
     path('resgates/', views.resgates, name='resgates'),
     path('excluir_raca/<int:id>', views.excluirRaca, name="excluir_raca"),
-    path('editar_raca/<int:id>', views.editarRaca, name="editar_raca")
+    path('editar_raca/<int:id>', views.editarRaca, name="editar_raca"),
+    path('excluir_animal/<int:id>', views.excluirAnimal, name="excluir_animal"),
+    path('editar_animal/<int:id>', views.editarAnimal, name="editar_animal")
 ]

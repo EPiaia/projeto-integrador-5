@@ -9,6 +9,14 @@ class Tipo(models.Model):
     def __str__(self):
         return self.tipo
     
+class Situacao(models.Model):
+    situacao = models.CharField(max_length=30)
+    class Meta:
+        verbose_name = "Situação"
+        verbose_name_plural = "Situações"
+    def __str__(self):
+        return self.situacao
+    
 class Raca(models.Model):
     tipo = models.ForeignKey(Tipo, on_delete=models.CASCADE)
     descricao = models.CharField(max_length=30)
@@ -60,7 +68,7 @@ class Animal(models.Model):
     nome = models.CharField(max_length = 60)
     foto = models.ImageField(upload_to='animais')
     observacao = models.CharField(max_length = 200)
-    situacao = models.CharField(max_length = 100)
+    situacao = models.ForeignKey(Situacao, on_delete=models.CASCADE)
     raca = models.ForeignKey(Raca, on_delete=models.CASCADE)
     class Meta:
         verbose_name = "Animal"
