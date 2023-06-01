@@ -78,36 +78,37 @@
 						<h1>Denunciar Maus-Tratos a Animais</h1>
 						<p>Se você testemunhou ou suspeita de maus-tratos a animais, por favor, nos informe para que
 							possamos investigar e tomar as medidas apropriadas.</p>
-						<form>
+						<form action="{% url 'denuncias' %}" method="post">
+                            {% csrf_token %}
 							<div class="form-group">
 								<label for="name">Nome</label>
-								<input type="text" class="form-control" id="name">
+								<input type="text" class="form-control" id="name" name="nome" required>
 							</div>
 
 							<div class="form-group">
 								<label for="email">Email</label>
-								<input type="email" class="form-control" id="email">
+								<input type="email" class="form-control" id="email" name="email" required>
 							</div>
 
 							<div class="form-group">
 								<label for="phone">Número de contato</label>
-								<input type="tel" class="form-control" id="phone">
+								<input type="tel" class="form-control" id="phone" name="telefone" required>
 							</div>
 
 							<div class="form-group">
 								<label for="location">Local do incidente</label>
-								<input type="text" class="form-control" id="location">
+								<input type="text" class="form-control" id="location" name="endereco" required>
 							</div>
 
 							<div class="form-group">
 								<label for="description">Observações</label>
-								<textarea class="form-control" id="description" rows="3"></textarea>
+								<textarea class="form-control" id="description" rows="3" name="observacoes"></textarea>
 							</div>
 							<div class="image-picker">
 								<label for="file-input" class="file-label">
 									<i class="material-icons d-inline-block align-middle">photo</i> Fotos
 								</label>
-								<input type="file" id="file-input" class="file-input" multiple>
+								<input type="file" id="file-input" class="file-input" name="fotos" multiple>
 								<ul class="image-list"></ul>
 							</div>
 							<hr>

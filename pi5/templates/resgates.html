@@ -79,32 +79,33 @@
                         <p>Obrigado por considerar a nossa organização de resgate para ajudar com as suas necessidades
                             de resgate de animais. Por favor, preencha o formulário abaixo e entraremos em contato com
                             você o mais breve possível.</p>
-                        <form>
+                        <form action="{% url 'resgates' %}" method="post">
+                            {% csrf_token %}
                             <div class="form-group">
                                 <label for="name">Nome</label>
-                                <input type="text" class="form-control" id="name" required>
+                                <input type="text" class="form-control" id="name" name="nome" required>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" required>
+                                <input type="email" class="form-control" id="email" name="email" required>
                             </div>
                             <div class="form-group">
                                 <label for="phone">Número de contato</label>
-                                <input type="tel" class="form-control" id="phone" required>
+                                <input type="tel" class="form-control" id="phone" name="telefone" required>
                             </div>
                             <div class="form-group">
                                 <label for="location">Localização</label>
-                                <input type="text" class="form-control" id="location" required>
+                                <input type="text" class="form-control" id="location" name="endereco" required>
                             </div>
                             <div class="form-group">
                                 <label for="description">Observações</label>
-                                <textarea class="form-control" id="description" rows="3" required></textarea>
+                                <textarea class="form-control" id="description" rows="3" name="observacoes" required></textarea>
                             </div>
                             <div class="image-picker">
                                 <label for="file-input" class="file-label">
                                     <i class="material-icons d-inline-block align-middle">photo</i> Fotos
                                 </label>
-                                <input type="file" id="file-input" class="file-input" multiple>
+                                <input type="file" id="file-input" class="file-input" name="fotos" multiple>
                                 <ul class="image-list"></ul>
                             </div>
                             <hr>

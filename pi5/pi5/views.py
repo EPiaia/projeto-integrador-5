@@ -111,7 +111,28 @@ def cadastro(request):
     return render(request, "cadastro.html")
 
 def denuncias(request):
+    if request.method == 'POST':
+        denuncia = Denuncia (
+            nome = request.POST['nome'].strip(),
+            email = request.POST['email'].strip(),
+            numero = request.POST['telefone'].strip(),
+            endereco = request.POST['endereco'].strip(),
+            observacao = request.POST['observacoes'].strip()
+        )
+        denuncia.save()
     return render(request, "denuncias.html")
+
+def resgates(request):
+    if request.method == 'POST':
+        solicResgate = SolicitacaoResgate (
+            nome = request.POST['nome'].strip(),
+            email = request.POST['email'].strip(),
+            numero = request.POST['telefone'].strip(),
+            endereco = request.POST['endereco'].strip(),
+            observacao = request.POST['observacoes'].strip()
+        )
+        solicResgate.save()
+    return render(request, "resgates.html")
 
 def login(request):
     return render(request, "login.html")
@@ -124,6 +145,3 @@ def relatorioDenuncias(request):
 
 def relatorioResgates(request):
     return render(request, "relatorioResgates.html")
-
-def resgates(request):
-    return render(request, "resgates.html")
