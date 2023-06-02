@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from pi5.models import *
+from pi5.utils import *
+import pdb; pdb.set_trace()
 
 def racas(request):
     if request.method == 'POST':
@@ -54,7 +56,33 @@ def adocao(request):
     return render(request, "adocao.html")
 
 def adotar(request):
-    return render(request, "adotar.html")
+    situacaoNaoAdotado = Situacao.objects.get(id=1)
+    animais = Animal.objects.filter(situacao=situacaoNaoAdotado)
+
+    linhas = []
+    linha = Linha()
+    count = 0
+    countLinhas = 0
+    for animal in animais:
+        if count == 3:
+            count = 0
+            linhas.append(linha)
+            linha = Linha()
+            countLinhas += 1
+        linha.animais.append(animal)
+        count += 1
+
+        v = int(animais.count()/3)
+        resto = animais.count() - (v * 3)
+
+        if count == resto and countLinhas == v:
+            linhas.append(linha)
+
+    context = {
+        "linhas": linhas
+    }
+
+    return render(request, "adotar.html", context)
 
 def animais(request):
     if request.method == 'POST':

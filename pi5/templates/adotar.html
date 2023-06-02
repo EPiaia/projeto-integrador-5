@@ -75,58 +75,21 @@
                 <h1>Animais para adoção</h1>
                 <p>Descubra o seu companheiro perfeito! Adote um animal e proporcione um lar amoroso.</p>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="{% static 'sources/example.jpg' %}" class="card-img-top" alt="Animal 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Nome do Animal 1</h5>
+
+            {% for linha in linhas %}
+                <div class="row">
+                    {% for animal in linha.animais %}
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="{% static 'sources/example.jpg' %}" class="card-img-top" alt="{{ animal.nome }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ animal.nome }}</h5>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    {% endfor %}
                 </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="{% static 'sources/example.jpg' %}" class="card-img-top" alt="Animal 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Nome do Animal 2</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="{% static 'sources/example.jpg' %}" class="card-img-top" alt="Animal 3">
-                        <div class="card-body">
-                            <h5 class="card-title">Nome do Animal 3</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="{% static 'sources/example.jpg' %}" class="card-img-top" alt="Animal 4">
-                        <div class="card-body">
-                            <h5 class="card-title">Nome do Animal 4</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="{% static 'sources/example.jpg' %}" class="card-img-top" alt="Animal 5">
-                        <div class="card-body">
-                            <h5 class="card-title">Nome do Animal 5</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="{% static 'sources/example.jpg' %}" class="card-img-top" alt="Animal 6">
-                        <div class="card-body">
-                            <h5 class="card-title">Nome do Animal 6</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </main>
     <footer>
