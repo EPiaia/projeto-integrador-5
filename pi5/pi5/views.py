@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from pi5.models import *
 from pi5.utils import *
-import pdb; pdb.set_trace()
 
 def racas(request):
     if request.method == 'POST':
@@ -53,7 +52,79 @@ def index(request):
     return render(request, "index.html")
 
 def adocao(request):
-    return render(request, "adocao.html")
+    if request.method == 'POST':
+        animal = Animal.objects.get(id=request.POST['animal'])
+        pessoa = Pessoa.objects.get(id=request.POST['pessoa'])
+        obs = request.POST['observacoes']
+
+        adocao = Adocao(
+            animal = animal,
+            pessoa = pessoa,
+            observacao = obs
+        )
+        adocao.save()
+        
+        sitAdotado = Situacao.objects.get(id=2)
+        animal.situacao = sitAdotado
+        animal.save()
+
+        return redirect('adocao')
+    else:
+        adocoes = Adocao.objects.all()
+        pessoas = Pessoa.objects.all()
+        sitNaoAdotado = Situacao.objects.get(id=1)
+        animais = Animal.objects.filter(situacao=sitNaoAdotado)
+
+        context = {
+            "adocoes": adocoes,
+            "pessoas": pessoas,
+            "animais": animais
+        }
+
+        return render(request, "adocao.html", context)
+    
+def excluirAdocao(request, id):
+    adocao = Adocao.objects.get(id=id)
+
+    sitNaoAdotado = Situacao.objects.get(id=1)
+    animal = adocao.animal
+    animal.situacao = sitNaoAdotado
+    animal.save()
+
+    adocao.delete()
+    return redirect('adocao')
+
+def editarAdocao(request, id):
+    adocao = Adocao.objects.get(id=id)
+    if request.method == 'POST':
+        animalAntigo = adocao.animal
+        animalNovo = Animal.objects.get(id=request.POST['animal'])
+        if animalNovo != animalAntigo:
+            sitNaoAdotado = Situacao.objects.get(id=1)
+            sitAdotado = Situacao.objects.get(id=2)
+            animalAntigo.situacao = sitNaoAdotado
+            animalNovo.situacao = sitAdotado
+            animalAntigo.save()
+            animalNovo.save()
+        adocao.animal = animalNovo
+        adocao.pessoa = Pessoa.objects.get(id=request.POST['pessoa'])
+        adocao.observacao = request.POST['observacoes']
+        adocao.save()
+        return redirect('adocao')
+    else:
+        adocoes = Adocao.objects.all()
+        sitNaoAdotado = Situacao.objects.get(id=1)
+        animais = Animal.objects.filter(situacao=sitNaoAdotado)
+        pessoas = Pessoa.objects.all()
+    
+        context = {
+            "adocao": adocao,
+            "adocoes": adocoes,
+            "animais": animais,
+            "pessoas": pessoas
+        }
+
+        return render(request, "adocao.html", context)
 
 def adotar(request):
     situacaoNaoAdotado = Situacao.objects.get(id=1)
@@ -166,7 +237,49 @@ def login(request):
     return render(request, "login.html")
 
 def pessoas(request):
-    return render(request, "pessoas.html")
+    if request.method == 'POST':
+        pessoa = Pessoa (
+            nome = request.POST['nome'].strip(),
+            email = request.POST['email'].strip(),
+            telefone = request.POST['telefone'].strip(),
+            cpf = request.POST['cpf'].strip(),
+            endereco = request.POST['endereco'].strip()
+        )
+        pessoa.save()
+        return redirect('pessoas')
+    else:
+        pessoas = Pessoa.objects.all()
+
+        context = {
+            "pessoas": pessoas
+        }
+
+        return render(request, "pessoas.html", context)
+
+def excluirPessoa(request, id):
+    pessoa = Pessoa.objects.get(id=id)
+    pessoa.delete()
+    return redirect('pessoas')
+
+def editarPessoa(request, id):
+    pessoa = Pessoa.objects.get(id=id)
+    if request.method == 'POST':
+        pessoa.nome = request.POST['nome'].strip()
+        pessoa.cpf = request.POST['cpf'].strip()
+        pessoa.email = request.POST['email'].strip()
+        pessoa.telefone = request.POST['telefone'].strip()
+        pessoa.endereco = request.POST['endereco'].strip()
+        pessoa.save()
+        return redirect('pessoas')
+    else:
+        pessoas = Pessoa.objects.all()
+    
+        context = {
+            "pessoas": pessoas,
+            "pessoa": pessoa
+        }
+
+        return render(request, "pessoas.html", context)
 
 def relatorioDenuncias(request):
     return render(request, "relatorioDenuncias.html")

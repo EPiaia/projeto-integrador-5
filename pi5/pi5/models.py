@@ -47,22 +47,6 @@ class Denuncia(models.Model):
     class Meta:
         verbose_name = "Denúncia"
         verbose_name_plural = "Denúncias"
-
-class Pessoa(models.Model):
-    nome = models.CharField(max_length = 120)
-    email = models.CharField(max_length = 80)
-    telefone = models.CharField(max_length = 20)
-    cpf = models.CharField(max_length = 11)
-    rua = models.CharField(max_length = 90)
-    numero_endereco = models.CharField(max_length = 10)
-    bairro = models.CharField(max_length = 50)
-    cidade = models.CharField(max_length = 60)
-    estado = models.CharField(max_length = 40)
-    class Meta:
-        verbose_name = "Pessoa"
-        verbose_name_plural = "Pessoas"
-    def __str__(self):
-        return self.nome
     
 class Animal(models.Model):
     nome = models.CharField(max_length = 60)
@@ -75,7 +59,19 @@ class Animal(models.Model):
         verbose_name_plural = "Animais"
     def __str__(self):
         return self.nome
-    
+
+class Pessoa(models.Model):
+    nome = models.CharField(max_length = 120)
+    email = models.CharField(max_length = 80)
+    telefone = models.CharField(max_length = 20)
+    cpf = models.CharField(max_length = 11)
+    endereco = models.CharField(max_length = 300)
+    class Meta:
+        verbose_name = "Pessoa"
+        verbose_name_plural = "Pessoas"
+    def __str__(self):
+        return self.nome
+
 class Adocao(models.Model):
     animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
     pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)

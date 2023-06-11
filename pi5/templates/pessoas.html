@@ -93,57 +93,47 @@
 							</tr>
 						</thead>
 						<tbody>
+                            {% for pessoa in pessoas %}
 							<tr>	
-								<td>Carlos Gomes</td>
-                                <td>carlos.gomes@gmail.com</td>
-                                <td>54 91344-5435</td>
+								<td>{{ pessoa.nome }}</td>
+                                <td>{{ pessoa.email }}</td>
+                                <td>{{ pessoa.telefone }}</td>
                                 <td>
 									<button class="icon-button ml-3">
-										<i class="material-icons cad-edit-icon">edit</i>
+										<a href="{% url 'editar_pessoa' pessoa.id %}"><i class="material-icons cad-edit-icon">edit</i></a>
 									</button>
 									<button class="icon-button ml-3">
-										<i class="material-icons cad-edit-icon">delete</i>
+										<a href="{% url 'excluir_pessoa' pessoa.id %}"><i class="material-icons cad-edit-icon">delete</i></a>
 									</button>
 								</td>
 							</tr>
-							<tr>
-								<td>Carlos Gomes</td>
-                                <td>carlos.gomes@gmail.com</td>
-                                <td>54 91344-5435</td>
-                                <td>
-									<button class="icon-button ml-3">
-										<i class="material-icons cad-edit-icon">edit</i>
-									</button>
-									<button class="icon-button ml-3">
-										<i class="material-icons cad-edit-icon">delete</i>
-									</button>
-								</td>
-							</tr>
+                            {% endfor %}
 						</tbody>
 					</table>
 				</div>
                 <div class="col-md-4">
                     <h1>Cadastrar uma pessoa</h1>
-                    <form>
+                    <form action="{% if pessoa %}{% url 'editar_pessoa' pessoa.id %}{% else %}{% url 'pessoas' %}{% endif %}" method="post">
+                        {% csrf_token %}
                         <div class="form-group">
 							<label for="animal-name">Nome</label>
-							<input type="text" class="form-control" id="animal-name">
+							<input type="text" class="form-control" id="animal-name" name="nome" value="{% if pessoa %}{{pessoa.nome}}{% endif %}">
 						</div>
                         <div class="form-group">
 							<label for="animal-name">CPF</label>
-							<input type="text" class="form-control" id="animal-name">
+							<input type="text" class="form-control" id="animal-name" name="cpf" value="{% if pessoa %}{{pessoa.cpf}}{% endif %}">
 						</div>
                         <div class="form-group">
 							<label for="animal-name">Email</label>
-							<input type="text" class="form-control" id="animal-name">
+							<input type="text" class="form-control" id="animal-name" name="email" value="{% if pessoa %}{{pessoa.email}}{% endif %}">
 						</div>
                         <div class="form-group">
 							<label for="animal-name">Número de Contato</label>
-							<input type="text" class="form-control" id="animal-name">
+							<input type="text" class="form-control" id="animal-name" name="telefone" value="{% if pessoa %}{{pessoa.telefone}}{% endif %}">
 						</div>
                         <div class="form-group">
 							<label for="animal-name">Endereço</label>
-							<input type="text" class="form-control" id="animal-name">
+							<input type="text" class="form-control" id="animal-name" name="endereco" value="{% if pessoa %}{{pessoa.endereco}}{% endif %}">
 						</div>
                         <hr>
                         <div class="form-submit">

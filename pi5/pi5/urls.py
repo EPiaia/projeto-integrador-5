@@ -36,5 +36,9 @@ urlpatterns = [
     path('excluir_raca/<int:id>', views.excluirRaca, name="excluir_raca"),
     path('editar_raca/<int:id>', views.editarRaca, name="editar_raca"),
     path('excluir_animal/<int:id>', views.excluirAnimal, name="excluir_animal"),
-    path('editar_animal/<int:id>', views.editarAnimal, name="editar_animal")
+    path('editar_animal/<int:id>', views.editarAnimal, name="editar_animal"),
+    path('editar_pessoa/<int:id>', views.editarPessoa, name="editar_pessoa"),
+    path('excluir_pessoa/<int:id>', views.excluirPessoa, name="excluir_pessoa"),
+    path('excluir_adocao/<int:id>', views.excluirAdocao, name="excluir_adocao"),
+    path('editar_adocao/<int:id>', views.editarAdocao, name="editar_adocao")
 ]
