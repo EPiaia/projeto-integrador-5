@@ -110,7 +110,7 @@
 						{% csrf_token %}
 						<div class="form-group">
 							<label for="animal-type">Tipo de Animal</label>
-							<select class="form-control" id="animal-type" name="tipo">
+							<select class="form-control" id="animal-type" name="tipo" required>
 								{% for t in tipos %}
 								<option value="{{ t.id }}">{{ t.tipo }}</option>
 								{% endfor %}
@@ -118,7 +118,7 @@
 						</div>
 						<div class="form-group">
 							<label for="description">Descrição</label>
-							<textarea class="form-control" id="description" rows="3" name="descricao">{% if raca %}{{ raca.descricao }}{% endif %}</textarea>
+							<textarea class="form-control" id="description" rows="3" name="descricao" required maxlength="30">{% if raca %}{{ raca.descricao }}{% endif %}</textarea>
 						</div>
 						<hr>
 						<div class="form-submit">

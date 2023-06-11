@@ -116,14 +116,14 @@
                     <form action="{% if adocao %}{% url 'editar_adocao' adocao.id %}{% else %}{% url 'adocao' %}{% endif %}" method="post">
                         {% csrf_token %}
                         <div class="form-group">
-                            <select class="form-control" id="animal" style="width: 100%; height: 45px !important;" name="animal">
+                            <select class="form-control" id="animal" style="width: 100%; height: 45px !important;" name="animal" required>
                               {% for animal in animais %}
                               <option value="{{ animal.id }}">{{ animal.nome }}</option>
                               {% endfor %}
                             </select>
                           </div>                                                 
                           <div class="form-group">
-                            <select class="form-control" id="pessoa" style="width: 100%;" name="pessoa">
+                            <select class="form-control" id="pessoa" style="width: 100%;" name="pessoa" required>
                               {% for pessoa in pessoas %}
                               <option value="{{ pessoa.id }}">{{ pessoa.nome }}</option>
                               {% endfor %}

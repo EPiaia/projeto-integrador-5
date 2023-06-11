@@ -117,23 +117,23 @@
                         {% csrf_token %}
                         <div class="form-group">
 							<label for="animal-name">Nome</label>
-							<input type="text" class="form-control" id="animal-name" name="nome" value="{% if pessoa %}{{pessoa.nome}}{% endif %}">
+							<input type="text" class="form-control" id="animal-name" name="nome" value="{% if pessoa %}{{pessoa.nome}}{% endif %}" required maxlength="120">
 						</div>
                         <div class="form-group">
 							<label for="animal-name">CPF</label>
-							<input type="text" class="form-control" id="animal-name" name="cpf" value="{% if pessoa %}{{pessoa.cpf}}{% endif %}">
+							<input type="text" class="form-control" id="animal-name" name="cpf" value="{% if pessoa %}{{pessoa.cpf}}{% endif %}" required maxlength="11">
 						</div>
                         <div class="form-group">
 							<label for="animal-name">Email</label>
-							<input type="text" class="form-control" id="animal-name" name="email" value="{% if pessoa %}{{pessoa.email}}{% endif %}">
+							<input type="text" class="form-control" id="animal-name" name="email" value="{% if pessoa %}{{pessoa.email}}{% endif %}" required maxlength="80">
 						</div>
                         <div class="form-group">
 							<label for="animal-name">Número de Contato</label>
-							<input type="text" class="form-control" id="animal-name" name="telefone" value="{% if pessoa %}{{pessoa.telefone}}{% endif %}">
+							<input type="text" class="form-control" id="animal-name" name="telefone" value="{% if pessoa %}{{pessoa.telefone}}{% endif %}" required maxlength="20">
 						</div>
                         <div class="form-group">
 							<label for="animal-name">Endereço</label>
-							<input type="text" class="form-control" id="animal-name" name="endereco" value="{% if pessoa %}{{pessoa.endereco}}{% endif %}">
+							<input type="text" class="form-control" id="animal-name" name="endereco" value="{% if pessoa %}{{pessoa.endereco}}{% endif %}" required maxlength="300">
 						</div>
                         <hr>
                         <div class="form-submit">
