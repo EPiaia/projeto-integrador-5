@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from pi5.models import *
 from pi5.utils import *
+from django.contrib.auth.models import User
+from django.contrib import auth
 
 def racas(request):
     if request.method == 'POST':
@@ -207,7 +209,34 @@ def editarAnimal(request, id):
         return render(request, "animais.html", context)
 
 def cadastro(request):
-    return render(request, "cadastro.html")
+    if request.method == 'POST':
+        nome = request.POST['nome'].strip()
+        email = request.POST['email'].strip()
+        senha = request.POST['senha'].strip()
+        pessoa = User.objects.create_user(username=email, first_name=nome, email=email, password=senha)
+        pessoa.save()
+        return redirect('login')
+    else:
+        return render(request, 'cadastro.html')
+        
+
+def login(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        senha = request.POST['senha']
+        user = auth.authenticate(request, username=email, password=senha)
+        if user is not None:
+            auth.login(request, user)
+            return redirect('index')
+        else:
+            errorMsg = "E-mail e senha não encontrados " + email + " / " + senha 
+            return render(request, 'login.html', {'errorMsg': errorMsg})
+    else:
+        return render(request, "login.html")
+    
+def logout(request):
+    auth.logout(request)
+    return redirect('index')
 
 def denuncias(request):
     if request.method == 'POST':
@@ -232,9 +261,6 @@ def resgates(request):
         )
         solicResgate.save()
     return render(request, "resgates.html")
-
-def login(request):
-    return render(request, "login.html")
 
 def pessoas(request):
     if request.method == 'POST':

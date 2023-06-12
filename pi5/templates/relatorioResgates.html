@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Relatório de Resgates</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -38,6 +38,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'adotar' %}">Adotar</a>
                         </li>
+                        {% if user.is_authenticated %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuCadastro" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,11 +61,18 @@
                                 <a class="dropdown-item" href="{% url 'relatorioDenuncias' %}">Denúncias</a>
                             </div>
                         </li>
+                        {% endif %}
                     </ul>
+                    {% if user.is_authenticated %}
                     <button type="button" class="btn btn-primary ml-auto btn-sign" style="white-space: nowrap;"><a
-                            href="{% url 'cadastro' %}">Cadastrar-se</a></button>
+                            href="{% url 'cadastro' %}">Cadastro</a></button>
+                    <button type="button" class="btn btn-primary ml-3 btn-sign" style="white-space: nowrap;"><a
+                            href="{% url 'logout' %}">Sair</a></button>
+                    {% endif %}
+                    {% if not user.is_authenticated %}
                     <button type="button" class="btn btn-primary ml-3 btn-sign" style="white-space: nowrap;"><a
                             href="{% url 'login' %}">Entrar</a></button>
+                    {% endif %}
                 </div>
             </div>
         </nav>

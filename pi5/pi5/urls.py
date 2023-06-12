@@ -28,6 +28,7 @@ urlpatterns = [
     path('cadastro/', views.cadastro, name='cadastro'),
     path('denuncias/', views.denuncias, name='denuncias'),
     path('login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout'),
     path('pessoas/', views.pessoas, name='pessoas'),
     path('racas/', views.racas, name='racas'),
     path('relatorioDenuncias/', views.relatorioDenuncias, name='relatorioDenuncias'),
