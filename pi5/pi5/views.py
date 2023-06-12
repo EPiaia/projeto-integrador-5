@@ -296,7 +296,17 @@ def editarPessoa(request, id):
         return render(request, "pessoas.html", context)
 
 def relatorioDenuncias(request):
-    return render(request, "relatorioDenuncias.html")
+    denuncias = Denuncia.objects.all()
+
+    context = {
+        "denuncias": denuncias
+    }
+    return render(request, "relatorioDenuncias.html", context)
 
 def relatorioResgates(request):
-    return render(request, "relatorioResgates.html")
+    resgates = SolicitacaoResgate.objects.all()
+
+    context = {
+        "solicitacoes" : resgates
+    }
+    return render(request, "relatorioResgates.html", context)

@@ -57,7 +57,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuRelatorios">
                                 <a class="dropdown-item" href="{% url 'relatorioResgates' %}">Resgates</a>
-                                <a class="dropdown-item" href="relatorio{% url 'denuncias' %}">Denúncias</a>
+                                <a class="dropdown-item" href="{% url 'relatorioDenuncias' %}">Denúncias</a>
                             </div>
                         </li>
                     </ul>
@@ -126,89 +126,34 @@
                                     <th scope="col">Nome</th>
                                     <th scope="col">E-mail</th>
                                     <th scope="col">Número de contato</th>
-                                    <th scope="col">Data</th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
+                                {% for denuncia in denuncias %}
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>John Smith</td>
-                                    <td>john.smith@example.com</td>
-                                    <td>54 91344-5435</td>
-                                    <td>1 de maio de 2023</td>
+                                    <th scope="row">{{ denuncia.id }}</th>
+                                    <td>{{ denuncia.nome }}</td>
+                                    <td>{{ denuncia.email }}</td>
+                                    <td>{{ denuncia.numero }}</td>
                                     <td>
                                         <button class="icon-button" onclick="openDialog('main-dialog')">
                                             <i class="material-icons cad-edit-icon">photo</i>
                                         </button>
-                                        <button class="icon-button ml-3" onclick="toggleRow('expanded-row-1')">
+                                        <button class="icon-button ml-3" onclick="toggleRow('expanded-row-{{ denuncia.id }}')">
                                             <i class="material-icons cad-edit-icon">open_in_full</i>
                                         </button>
                                     </td>
                                 </tr>
-                                <tr id="expanded-row-1" class="expanded-row">
+                                <tr id="expanded-row-{{ denuncia.id }}" class="expanded-row">
                                     <td colspan="6" style="text-align: left;">
                                         <p style="font-weight: 600;">Local do incidente:</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                        <p>{{ denuncia.endereco }}</p>
                                         <p style="font-weight: 600;">Observações:</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ipsa
-                                            blanditiis aliquid sapiente earum libero ipsam doloremque quo? Eveniet sed
-                                            distinctio reiciendis, nulla laboriosam natus voluptatum perspiciatis
-                                            eligendi obcaecati ullam.</p>
+                                        <p>{{ denuncia.observacao }}</p>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>John Smith</td>
-                                    <td>john.smith@example.com</td>
-                                    <td>54 91344-5435</td>
-                                    <td>1 de maio de 2023</td>
-                                    <td>
-                                        <button class="icon-button">
-                                            <i class="material-icons cad-edit-icon">photo</i>
-                                        </button>
-                                        <button class="icon-button ml-3" onclick="toggleRow('expanded-row-2')">
-                                            <i class="material-icons cad-edit-icon">open_in_full</i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr id="expanded-row-2" class="expanded-row">
-                                    <td colspan="6" style="text-align: left;">
-                                        <p style="font-weight: 600;">Local do incidente:</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                        <p style="font-weight: 600;">Observações:</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ipsa
-                                            blanditiis aliquid sapiente earum libero ipsam doloremque quo? Eveniet sed
-                                            distinctio reiciendis, nulla laboriosam natus voluptatum perspiciatis
-                                            eligendi obcaecati ullam.</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>John Smith</td>
-                                    <td>john.smith@example.com</td>
-                                    <td>54 91344-5435</td>
-                                    <td>1 de maio de 2023</td>
-                                    <td>
-                                        <button class="icon-button">
-                                            <i class="material-icons cad-edit-icon">photo</i>
-                                        </button>
-                                        <button class="icon-button ml-3" onclick="toggleRow('expanded-row-3')">
-                                            <i class="material-icons cad-edit-icon">open_in_full</i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr id="expanded-row-3" class="expanded-row">
-                                    <td colspan="6" style="text-align: left;">
-                                        <p style="font-weight: 600;">Local do incidente:</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                        <p style="font-weight: 600;">Observações:</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ipsa
-                                            blanditiis aliquid sapiente earum libero ipsam doloremque quo? Eveniet sed
-                                            distinctio reiciendis, nulla laboriosam natus voluptatum perspiciatis
-                                            eligendi obcaecati ullam.</p>
-                                    </td>
-                                </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>
