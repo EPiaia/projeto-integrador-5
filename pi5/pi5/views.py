@@ -238,11 +238,18 @@ def login(request):
 
 def pessoas(request):
     if request.method == 'POST':
+        cpf = request.POST['cpf'].strip()
+        if not cpf_valido(cpf):
+            context = {
+                "errorMsg": "O CPF não é válido"
+            }
+            return render(request, "pessoas.html", context)
+        
         pessoa = Pessoa (
             nome = request.POST['nome'].strip(),
             email = request.POST['email'].strip(),
             telefone = request.POST['telefone'].strip(),
-            cpf = request.POST['cpf'].strip(),
+            cpf = cpf,
             endereco = request.POST['endereco'].strip()
         )
         pessoa.save()
@@ -264,8 +271,15 @@ def excluirPessoa(request, id):
 def editarPessoa(request, id):
     pessoa = Pessoa.objects.get(id=id)
     if request.method == 'POST':
+        cpf = request.POST['cpf'].strip()
+        if not cpf_valido(cpf):
+            context = {
+                "errorMsg": "O CPF não é válido"
+            }
+            return render(request, "pessoas.html", context)
+    
         pessoa.nome = request.POST['nome'].strip()
-        pessoa.cpf = request.POST['cpf'].strip()
+        pessoa.cpf = cpf
         pessoa.email = request.POST['email'].strip()
         pessoa.telefone = request.POST['telefone'].strip()
         pessoa.endereco = request.POST['endereco'].strip()

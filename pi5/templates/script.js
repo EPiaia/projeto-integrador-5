@@ -9,21 +9,6 @@ function openDialog(dialogId) {
     dialog.close();
 }
 
-//Dropdown
-$(document).ready(function () {
-    $('#animal-search').select2({
-      placeholder: 'Animal',
-      allowClear: true,
-    });
-  });
-  
-  $(document).ready(function () {
-    $('#pessoa-search').select2({
-      placeholder: 'Pessoa',
-      allowClear: true,
-    });
-  });
-
 //Image picker
 const fileInput = document.getElementById('file-input');
 const imageList = document.querySelector('.image-list');

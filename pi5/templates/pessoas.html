@@ -113,6 +113,11 @@
 				</div>
                 <div class="col-md-4">
                     <h1>Cadastrar uma pessoa</h1>
+                    {% if errorMsg %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ errorMsg }}
+                    </div>
+                    {% endif %}
                     <form action="{% if pessoa %}{% url 'editar_pessoa' pessoa.id %}{% else %}{% url 'pessoas' %}{% endif %}" method="post">
                         {% csrf_token %}
                         <div class="form-group">
@@ -121,11 +126,11 @@
 						</div>
                         <div class="form-group">
 							<label for="animal-name">CPF</label>
-							<input type="text" class="form-control" id="animal-name" name="cpf" value="{% if pessoa %}{{pessoa.cpf}}{% endif %}" required maxlength="11">
+							<input type="text" class="form-control" id="animal-name" name="cpf" value="{% if pessoa %}{{pessoa.cpf}}{% endif %}" required maxlength="14">
 						</div>
                         <div class="form-group">
 							<label for="animal-name">Email</label>
-							<input type="text" class="form-control" id="animal-name" name="email" value="{% if pessoa %}{{pessoa.email}}{% endif %}" required maxlength="80">
+							<input type="email" class="form-control" id="animal-name" name="email" value="{% if pessoa %}{{pessoa.email}}{% endif %}" required maxlength="80">
 						</div>
                         <div class="form-group">
 							<label for="animal-name">Número de Contato</label>
